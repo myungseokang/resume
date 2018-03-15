@@ -469,7 +469,7 @@
             <div class="col">
               <div class="row">
                 <div class="col-md-3 col-12 text-md-right">
-                  <h4 class="gray">2016. 07 ~ NOW <small><span class="badge badge-info">1년 8개월</span> </small></h4>
+                  <h4 class="gray">2016. 07 ~ NOW <small><span id="career" class="badge badge-info"></span></small></h4>
                 </div>
                 <div class="col-md-9 col-12">
                   <h4>오픈갤러리</h4>
@@ -691,7 +691,7 @@
 
               <div class="row">
                 <div class="col-md-3 col-12 text-md-right">
-                  <h4 class="gray">2018. 02. 21 ~ NOW</h4>
+                  <h4 class="gray">2018. 02. 21 ~ NOW <small><span id="army" class="badge badge-info"></span></small></h4>
                 </div>
                 <div class="col-md-9 col-12">
                   <h4>산업기능요원 복무중</h4>
@@ -735,4 +735,39 @@
       <!-- Footer End -->
     </div>
   </body>
+
+  <script>
+    $(document).ready(function() {
+      var careerStartDate = new Date('2016-07-25'),
+          armyStartDate = new Date('2018-02-21'),
+          now = new Date(),
+          career = $('#career'),
+          army = $('#army'),
+          armyGap, careerGap,
+          armyText, careerText;
+
+      careerGap = now.getTime() - careerStartDate.getTime();
+      careerGap = Math.floor(careerGap / (1000 * 60 * 60 * 24 * 30));
+
+      armyGap = now.getTime() - armyStartDate.getTime();
+      armyGap = Math.floor(armyGap / (1000 * 60 * 60 * 24 * 30));
+
+      if (armyGap < 1) {
+        armyText = '1개월';
+      }
+      else {
+        armyText = parseInt(armyGap/12)+'년 '+parseInt(armyGap%12)+'개월';
+      }
+
+      if (careerGap < 1) {
+        careerText = '1개월';
+      }
+      else {
+        careerText = parseInt(careerGap/12)+'년 '+parseInt(careerGap%12)+'개월';
+      }
+
+      career.text(careerText);
+      army.text(armyText);
+    });
+  </script>
 </html>
