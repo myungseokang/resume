@@ -753,6 +753,7 @@
       armyGap = Math.floor(armyGap / (1000 * 60 * 60 * 24 * 30));
 
       if (armyGap < 1) {
+        // 1개월 미만이면 그냥 1개월로 퉁
         armyText = '1개월';
       }
       else {
@@ -760,6 +761,7 @@
       }
 
       if (careerGap < 1) {
+        // 1개월 미만이면 그냥 1개월로 퉁
         careerText = '1개월';
       }
       else {
