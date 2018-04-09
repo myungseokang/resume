@@ -750,20 +750,30 @@
       armyGap = now.getTime() - armyStartDate.getTime();
       armyGap = Math.floor(armyGap / (1000 * 60 * 60 * 24 * 30));
 
-      if (armyGap < 1) {
-        // 1개월 미만이면 그냥 1개월로 퉁
+      if (armyGap <= 1) {
+        // 1개월 이하면 그냥 1개월로 퉁
         armyText = '1개월';
       }
       else {
-        armyText = parseInt(armyGap/12)+'년 '+parseInt(armyGap%12)+'개월';
+        if (armyGap < 12) {
+          armyText = parseInt(armyGap%12)+'개월';
+        }
+        else {
+          armyText = parseInt(armyGap/12)+'년 '+parseInt(armyGap%12)+'개월';
+        }
       }
 
-      if (careerGap < 1) {
-        // 1개월 미만이면 그냥 1개월로 퉁
+      if (careerGap <= 1) {
+        // 1개월 이하면 그냥 1개월로 퉁
         careerText = '1개월';
       }
       else {
-        careerText = parseInt(careerGap/12)+'년 '+parseInt(careerGap%12)+'개월';
+        if (careerGap < 12) {
+          careerText = parseInt(careerGap%12)+'개월';
+        }
+        else {
+          careerText = parseInt(careerGap/12)+'년 '+parseInt(careerGap%12)+'개월';
+        }
       }
 
       career.text(careerText);
