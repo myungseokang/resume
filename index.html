@@ -107,8 +107,7 @@
           <p>
             사람들에게 도움이 되거나 재밌어할만한 것을 개발하고 싶습니다.<br/>
             주로 AWS, Git, Python, Django, PostgreSQL 를 이용해 개발을 하고 있습니다.<br/>
-            Back-End와 DevOps, 자동화 쪽에 관심이 많습니다.<br/>
-            jQuery 를 좋아하지 않습니다.
+            Back-End와 DevOps, 자동화 쪽에 관심이 많습니다.
           </p>
         </div>
       </div>
@@ -489,14 +488,20 @@
                     <li>
                       <strong>Front-End</strong>
                       <ul>
+                        <li>Django Template 사용</li>
                         <li>HTML, CSS, jQuery, Bootstrap 사용</li>
                       </ul>
                     </li>
                     <li>
-                      <strong>Etc</strong>
+                      <strong>ETC</strong>
                       <ul>
                         <li>원격저장소(Bitbucket) 도입</li>
-                        <li>SlackBot(OG BOT) 개발</li>
+                        <li>SlackBot 개발 및 Heroku 에서 운영</li>
+                        <li>Git-flow 전략 제시 및 운영</li>
+                        <ul>
+                          <li>master, develop, stage, feature/*, fix-* 등등 브랜치 네이밍 규칙 설정</li>
+                          <li>master, stage 는 Pull Request(이하 PR) 를 통해서만 커밋할 수 있으며, PR이 머지되었을 경우 CI에서 자동으로 테스트 서버와 실서버를 구분하여 배포하게끔 Circle CI 스크립트 작성</li>
+                        </ul>
                       </ul>
                     </li>
                   </ul>
