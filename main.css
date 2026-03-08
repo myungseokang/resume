@@ -1,31 +1,566 @@
-.resume {
-  font-family: 'Noto Sans KR', sans-serif;
-  font-weight: 300;
-  word-wrap: break-word;
-  word-break: keep-all;
-  line-height: 1.8
+/* ========================================
+   강명서 이력서 - Modern Resume Stylesheet
+   ======================================== */
+
+/* ---------- CSS Variables ---------- */
+:root {
+  --color-primary: #1a1a2e;
+  --color-accent: #3a86ff;
+  --color-accent-light: #e8f0fe;
+  --color-text: #2d2d2d;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-border: #e5e7eb;
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f9fafb;
+  --color-bg-footer: #f3f4f6;
+  --font-heading: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius: 12px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --transition: 0.2s ease;
 }
 
+/* ---------- Reset & Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-bg-subtle);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.8;
+  word-wrap: break-word;
+  word-break: keep-all;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Layout ---------- */
+.resume {
+  font-family: var(--font-body);
+  font-weight: 400;
+  word-wrap: break-word;
+  word-break: keep-all;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+  background-color: var(--color-bg);
+  min-height: 100vh;
+}
+
+@media (min-width: 768px) {
+  .resume {
+    padding: 60px 60px 0;
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .resume {
+    padding: 80px 80px 0;
+  }
+}
+
+/* ---------- Typography ---------- */
+h1 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin: 0 0 8px 0;
+}
+
+h4 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--color-text);
+  margin: 0 0 4px 0;
+  line-height: 1.5;
+}
+
+p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.85;
+  margin: 0 0 8px 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+/* ---------- Colors ---------- */
 .blue {
-  color: #3c78d8;
+  color: var(--color-accent);
 }
 
 .gray {
-  color: gray;
+  color: var(--color-text-muted);
+  font-weight: 400;
 }
 
+/* ---------- Profile Section ---------- */
 .profile-img {
-  max-height: 320px;
+  max-height: 180px;
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-border);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
-.footer-cover {
-  background-color: #f5f5f5;
+.profile-img:hover {
+  transform: scale(1.03);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.profile-info .row {
+  margin: 0;
+}
+
+.profile-info i {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  width: 20px;
+  text-align: center;
+}
+
+.profile-info a {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ---------- Section Styling ---------- */
+.section {
+  padding: 40px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.section:first-of-type {
+  border-top: none;
+}
+
+/* Use pt-5 sections as section containers */
+.row.pt-5 {
+  padding-top: 36px !important;
+  padding-bottom: 8px;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0;
+}
+
+.row.pt-5:first-child {
+  border-top: none;
+}
+
+/* Section header */
+.row.pt-5 > .col-12.col-md-3 > h2,
+.row.pt-5 > .col > .row.pb-3 h2 {
+  color: var(--color-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+/* ---------- Experience Items ---------- */
+.experience-item {
+  margin-bottom: 32px;
+}
+
+/* Date labels in experience */
+.col-md-3 h4.gray {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* Company/Role title */
+.col-md-9 > h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: 12px;
+}
+
+/* Nested lists in experience */
+.col-md-9 ul {
   padding-left: 0;
-  padding-right: 0;
-  margin-top: 50px;
-  height: 80px;
+  list-style: none;
+  margin: 0;
+}
+
+.col-md-9 ul > li {
+  position: relative;
+  padding-left: 16px;
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.col-md-9 ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  opacity: 0.6;
+}
+
+.col-md-9 ul ul {
+  margin-top: 6px;
+  padding-left: 0;
+}
+
+.col-md-9 ul ul > li {
+  padding-left: 16px;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.col-md-9 ul ul > li::before {
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-text-muted);
+  opacity: 0.4;
+  top: 12px;
+}
+
+/* Sub-section bold titles */
+.col-md-9 ul > li > b {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 0.93rem;
+}
+
+/* ---------- Skills Section ---------- */
+.col-md-4 b {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  padding: 4px 12px;
+  background-color: var(--color-accent-light);
+  border-radius: 6px;
+  margin-bottom: 4px;
+}
+
+.col-md-4 ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.col-md-4 ul li {
+  position: relative;
+  padding-left: 14px;
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2px;
+  line-height: 1.7;
+}
+
+.col-md-4 ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 11px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  opacity: 0.4;
+}
+
+/* ---------- Badge ---------- */
+.badge-info {
+  background-color: var(--color-accent);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0;
+  vertical-align: middle;
+}
+
+/* ---------- Introduce Section ---------- */
+.row.pt-5 > .col-12.col-md-9 > p {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--color-text);
+}
+
+/* ---------- Education & Community ---------- */
+.row.pt-5 i.gray {
+  font-size: 0.88rem;
+  font-style: normal;
+  color: var(--color-text-muted);
+}
+
+/* ---------- Buttons ---------- */
+.btn-secondary {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: all var(--transition);
+}
+
+.btn-secondary:hover {
+  background-color: #2d2d4e;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-info {
+  background-color: var(--color-accent);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition);
+}
+
+.btn-info:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---------- Footer ---------- */
+.footer-cover {
+  background-color: var(--color-bg-footer);
+  padding: 24px 0;
+  margin-top: 48px;
+  height: auto;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
 }
 
 .footer {
-  padding-top: 10px;
+  padding: 0;
+}
+
+.footer small {
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  line-height: 1.8;
+}
+
+.footer a {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+.footer a:hover {
+  color: var(--color-accent);
+}
+
+/* ---------- Responsive ---------- */
+
+/* Mobile (< 576px) */
+@media (max-width: 575.98px) {
+  .resume {
+    padding: 24px 20px 0;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+    max-height: 120px;
+    margin: 0 auto 16px;
+    display: block;
+  }
+
+  .row.pt-5 {
+    padding-top: 24px !important;
+  }
+
+  .col-md-3 h4.gray {
+    font-size: 0.8rem;
+    text-align: left !important;
+    margin-bottom: 4px;
+  }
+
+  .col-md-9 > h4 {
+    font-size: 0.98rem;
+  }
+
+  .col-md-9 ul > li {
+    font-size: 0.88rem;
+  }
+
+  .col-md-9 ul ul > li {
+    font-size: 0.84rem;
+  }
+
+  .footer-cover {
+    margin-top: 32px;
+    padding: 16px 0;
+  }
+
+  .btn-secondary,
+  .btn-info {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .resume {
+    padding: 32px 32px 0;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+    max-height: 140px;
+    margin: 0 auto 16px;
+    display: block;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+/* Desktop tweaks */
+@media (min-width: 768px) {
+  .col-md-3 {
+    padding-right: 24px;
+  }
+
+  .profile-info .col-1 {
+    flex: 0 0 28px;
+    max-width: 28px;
+  }
+}
+
+/* Large screens - center the resume card */
+@media (min-width: 1024px) {
+  body {
+    padding: 40px 0;
+  }
+
+  .resume {
+    border-radius: var(--radius);
+    margin-bottom: 40px;
+  }
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+
+  .resume {
+    box-shadow: none;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .row.pt-5 {
+    break-inside: avoid;
+  }
+
+  .btn,
+  .footer-cover {
+    display: none;
+  }
+
+  a {
+    color: var(--color-text);
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-primary);
+}
+
+/* ---------- Scrollbar (Webkit) ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-text-muted);
 }
